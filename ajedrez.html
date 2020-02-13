@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .rojo {
+
+            background-color: red;
+            float: left;
+
+        }
+
+        .verde {
+
+            background-color: green;
+            float: left;
+
+        }
+
+        .fila:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="fila">
+        <div class="rojo"></div>
+        <div class="verde"></div>
+        <div class="rojo"></div>
+    </div> -->
+
+
+    <script>
+
+        //tablero de ajedrez donde pueda elegir el tamaño de la casilla y la cantidad de casilla por FILA.
+        var tamano = prompt('Dame un tamaño de casilla');
+        var numero = prompt('Dame un numero de casillas');
+        function crearFila(pTamano, pCasillas, pColor) {
+            var color = "";
+            var fila = "";
+            for (var i = 1; i <= pCasillas; i++) {
+                if (pColor == "rojo") {
+                    color = (i % 2 != 0) ? 'rojo' : 'verde';
+                }
+                else {
+                    color = (i % 2 != 0) ? 'verde' : 'rojo';
+                }
+                fila += '<div class="' + color + '" style="width: ' + pTamano + 'px; height:' + pTamano + 'px"></div>';
+            }
+            document.write('<div class="fila">' + fila + "</div>");
+        }
+
+
+        function crearTablero(pNumeroCasillas) {
+            for (var i = 1; i <= pNumeroCasillas; i++) {
+                var colorInicial = (i % 2 != 0) ? "rojo" : "verde";
+                crearFila(tamano, pNumeroCasillas, colorInicial);
+            }
+        }
+
+        crearTablero(numero);
+
+    </script>
+</body>
+
+</html>
